@@ -19,6 +19,7 @@ main{max-width:520px;margin:0 auto;padding:18px 16px 32px}
 .card h2{font-size:17px;margin:0 0 10px}
 a.btn,button{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;border:0;border-radius:10px;background:var(--navy);color:#fff;font:inherit;font-weight:700;text-decoration:none;margin-top:10px;cursor:pointer}
 button{background:var(--red)}
+a.btn.accent{background:var(--red)}.spread{letter-spacing:0.578em;margin-right:-0.578em}.daily h2{display:flex;align-items:center;gap:8px}.daily h2::before{content:'';width:6px;height:18px;border-radius:3px;background:var(--red)}
 </style>
 </head>
 <body>
@@ -34,6 +35,12 @@ button{background:var(--red)}
     <a class="btn" href="https://script.google.com/macros/s/AKfycbwOBoLPPE7fk9e5bdQHj8zpLCisCr0vZYzAzQ9dkR6TTlxgp-8bjwcOrkQ0MiEtIjYX/exec?view=ranges">매출 현황</a>
     <a class="btn" href="https://docs.google.com/spreadsheets/d/1G_iKr8XkUWeYRRVMN7zWFcl-WRHNEkonzWiHpeTZ-mI/edit">발주 시트</a>
     <a class="btn" href="https://docs.google.com/spreadsheets/d/11GAtnElvit1TVcc--nU4ROfWAEOarHRLWIIgOyagfug/edit">매출 시트</a>
+  </section>
+  <section class="card daily">
+    <h2>매일 업무</h2>
+    <a class="btn accent" href="https://script.google.com/macros/s/AKfycbwOBoLPPE7fk9e5bdQHj8zpLCisCr0vZYzAzQ9dkR6TTlxgp-8bjwcOrkQ0MiEtIjYX/exec?view=ranges&amp;focus=pork">돈가 확인</a>
+    <a class="btn accent" href="https://script.google.com/macros/s/AKfycbwv-opC60PwG_N9WH0kFmileX8VfR1lJ00gyh4XbvBNID2MS-RV6sJFvg3eeoGoVwqKGg/exec?view=promo"><span class="spread">단가표</span></a>
+    <a class="btn accent" href="https://script.google.com/macros/s/AKfycbwv-opC60PwG_N9WH0kFmileX8VfR1lJ00gyh4XbvBNID2MS-RV6sJFvg3eeoGoVwqKGg/exec?view=today">발주 확인</a>
   </section>
 </main>
 <script>
