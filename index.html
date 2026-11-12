@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>미소찬 발주 관리</title>
+<title>미소찬 영업 관리</title>
 <meta name="theme-color" content="#1B2F45">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="admin-192.png">
 <link rel="apple-touch-icon" href="admin-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="발주 관리">
+<meta name="apple-mobile-web-app-title" content="영업 관리">
 <style>
 :root{--navy:#1B2F45;--red:#B3262E;--bg:#F3F1EE;--line:#DDE3E9;--muted:#4A5B6D}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--navy);font:16px/1.5 -apple-system,'Malgun Gothic','Apple SD Gothic Neo',sans-serif}
@@ -22,9 +22,12 @@ button{background:var(--red)}
 </style>
 </head>
 <body>
-<header><h1>미소찬 발주 관리</h1><p>관리자 전용 · 구글 로그인 필요</p></header>
+<header><h1>미소찬 영업 관리</h1><p>관리자 전용 · 구글 로그인 필요</p></header>
 <main>
+  <section class="card" id="kakaoCard" hidden><h2>브라우저에서 열어 주세요</h2><p style="margin:0 0 6px;color:var(--muted);font-size:14px">카카오톡 안에서는 앱 설치가 되지 않습니다.</p><button id="openExternal" type="button">크롬으로 열기</button></section>
   <section class="card" id="installCard" hidden><h2>앱으로 설치</h2><button id="installBtn" type="button">앱 설치</button></section>
+  <section class="card" id="iosCard" hidden><h2>아이폰 설치 방법</h2><ol style="margin:0;padding-left:20px"><li>사파리 아래 <b>공유 버튼(□↑)</b></li><li><b>홈 화면에 추가</b></li><li>오른쪽 위 <b>추가</b></li></ol></section>
+  <section class="card" id="manualCard" hidden><h2>설치 버튼이 안 보이면</h2><p style="margin:0;color:var(--muted);font-size:14px">크롬 오른쪽 위 <b>⋮</b> → <b>홈 화면에 추가</b> 또는 <b>앱 설치</b>를 누르세요. 삼성 인터넷은 <b>≡</b> → <b>페이지 추가</b> → <b>홈 화면</b>입니다.</p></section>
   <section class="card">
     <h2>바로가기</h2>
     <a class="btn" href="https://script.google.com/macros/s/AKfycbwv-opC60PwG_N9WH0kFmileX8VfR1lJ00gyh4XbvBNID2MS-RV6sJFvg3eeoGoVwqKGg/exec?view=admin">발주 관리</a>
@@ -35,8 +38,12 @@ button{background:var(--red)}
 </main>
 <script>
 'use strict';
+const ua=navigator.userAgent,isKakao=/KAKAOTALK/i.test(ua),isIOS=/iPhone|iPad|iPod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),isAndroid=/Android/i.test(ua),standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+if(!standalone){if(isKakao){document.getElementById('kakaoCard').hidden=false;document.getElementById('openExternal').onclick=()=>{const here=location.href;location.href=isAndroid?'intent://'+here.replace(/^https?:\/\//,'')+'#Intent;scheme=https;package=com.android.chrome;end':'kakaotalk://web/openExternal?url='+encodeURIComponent(here);};}else if(isIOS){document.getElementById('iosCard').hidden=false;}else{setTimeout(()=>{if(document.getElementById('installCard').hidden)document.getElementById('manualCard').hidden=false;},2500);}}
 let d=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();d=e;document.getElementById('installCard').hidden=false;});
 document.getElementById('installBtn').onclick=async()=>{if(!d)return;d.prompt();await d.userChoice;d=null;document.getElementById('installCard').hidden=true;};
+// 앱으로 열었을 때 바로가기에 표시를 붙여 발주 관리 화면의 '홈 화면에 추가' 버튼 숨김
+if(matchMedia('(display-mode: standalone)').matches||navigator.standalone===true){document.querySelectorAll('a.btn[href*="script.google.com"]').forEach(a=>{a.href+=(a.href.includes('?')?'&':'?')+'app=1';});}
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
