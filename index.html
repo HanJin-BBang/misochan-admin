@@ -11,6 +11,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="영업 관리">
 <style>
+body{caret-color:transparent}input,textarea,select{caret-color:auto}
 :root{--navy:#1B2F45;--red:#B3262E;--bg:#F3F1EE;--line:#DDE3E9;--muted:#4A5B6D}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--navy);font:16px/1.5 -apple-system,'Malgun Gothic','Apple SD Gothic Neo',sans-serif}
 header{background:var(--navy);color:#fff;padding:18px 16px;border-bottom:4px solid var(--red)}header h1{font-size:19px;margin:0}header p{margin:2px 0 0;color:#D6DEE7;font-size:13px}
@@ -28,7 +29,7 @@ a.btn.accent{background:var(--red)}.spread{letter-spacing:0.578em;margin-right:-
   <section class="card" id="kakaoCard" hidden><h2>브라우저에서 열어 주세요</h2><p style="margin:0 0 6px;color:var(--muted);font-size:14px">카카오톡 안에서는 앱 설치가 되지 않습니다.</p><button id="openExternal" type="button">크롬으로 열기</button></section>
   <section class="card" id="installCard" hidden><h2>앱으로 설치</h2><button id="installBtn" type="button">앱 설치</button></section>
   <section class="card" id="iosCard" hidden><h2>아이폰 설치 방법</h2><ol style="margin:0;padding-left:20px"><li>사파리 아래 <b>공유 버튼(□↑)</b></li><li><b>홈 화면에 추가</b></li><li>오른쪽 위 <b>추가</b></li></ol></section>
-  <section class="card" id="manualCard" hidden><h2>설치 버튼이 안 보이면</h2><p style="margin:0;color:var(--muted);font-size:14px">크롬 오른쪽 위 <b>⋮</b> → <b>홈 화면에 추가</b> 또는 <b>앱 설치</b>를 누르세요. 삼성 인터넷은 <b>≡</b> → <b>페이지 추가</b> → <b>홈 화면</b>입니다.</p></section>
+  <section class="card" id="manualCard" hidden><h2>설치 버튼이 안 보이면</h2><p style="margin:0;color:var(--muted);font-size:14px">· <b>휴대폰 크롬</b> : 오른쪽 위 <b>⋮</b> → <b>홈 화면에 추가</b> (또는 <b>앱 설치</b>)<br>· <b>PC 크롬</b> : 오른쪽 위 <b>⋮</b> → <b>캐스팅, 저장, 공유</b> → <b>페이지를 앱으로 설치</b><br>· <b>삼성 인터넷</b> : <b>≡</b> → <b>페이지 추가</b> → <b>홈 화면</b></p></section>
   <section class="card">
     <h2>바로가기</h2>
     <a class="btn" href="https://script.google.com/macros/s/AKfycbwv-opC60PwG_N9WH0kFmileX8VfR1lJ00gyh4XbvBNID2MS-RV6sJFvg3eeoGoVwqKGg/exec?view=admin">발주 관리</a>
